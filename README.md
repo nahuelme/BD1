@@ -4,5 +4,6 @@ Integrantes:
 
 Daniel Frutos
 Nicolas Inchausti
-Nahuel escullini
+Nahuel Escullini
 Nicolas Lozano
+
