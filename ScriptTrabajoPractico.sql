@@ -289,6 +289,31 @@ begin
     delete from Insumo where Insumo.idInsumo = _idInsumo;
 end $$
 DELIMITER ;
+                                                                                    
+                                                                                    -- ALTA Pedido
+DELIMITER $$
+CREATE PROCEDURE altaPedido(IN _idPedido INT, IN _FechaEstimada DATE, IN _Consecionaria_idConsecionaria INT)
+begin
+INSERT INTO PedidoAuto (idPedido, FechaEstimada, Consecionaria_idConsecionaria) VALUES (_idPedido, _FechaEstimada, _Consecionaria_idConsecionaria);
+END $$
+DELIMITER ;
+
+-- BAJA Pedido
+DELIMITER $$
+CREATE PROCEDURE bajaPedido (IN _idPedido INT, IN _FechaEstimada DATE, IN _Consecionaria_idConsecionaria INT)
+begin
+    delete from Pedido where Pedido.idPedido = _idPedido;
+end $$
+delimiter;
+
+-- MODIFICACION Pedido
+DELIMITER $$
+CREATE PROCEDURE modificarPedido (IN _idPedido INT, IN _FechaEstimada DATE, IN _Consecionaria_idConsecionaria INT)
+begin
+UPDATE Pedido SET FechaEstimada = _FechaEstimada WHERE (idPedido = _idPedido);
+END$$
+DELIMITER ;
+
 
 call altaInsumo(1,'tornillos',30);
 call modificarInsumo(1,'bujias',50);
