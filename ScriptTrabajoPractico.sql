@@ -236,7 +236,32 @@ DELIMITER ;
 call altaProvedor(1,'GetulioCompany');
 call modificarProvedor(1,'GetuliosCompany');
 
-////
+/* Alta Auto */
+DELIMITER $$
+CREATE PROCEDURE altaAuto (IN _Numero_Chasis int, IN _Modelo_idModelo int, IN _Terminado tinyint)
+BEGIN
+Call Generador_patente();
+INSERT INTO Auto(Numero_Chasis,Modelo_idModelo,Terminado) VALUES (_Numero_Chasis,_Modelo_idModelo,_Terminado);
+END $$
+DELIMITER ;
+
+/* Modificacion AUTO */
+DELIMITER $$
+CREATE procedure modificarAuto (IN _Numero_Chasis int, IN _Modelo_idModelo int, IN _Terminado tinyint)
+BEGIN
+UPDATE Auto SET Auto.Numero_Chasis = _Numero_Chasis WHERE (Numero_Chasis = _Numero_Chasis);
+UPDATE Auto SET Auto.Modelo_idModelo = _Modelo_idModelo WHERE (Numero_Chasis = _Numero_Chasis);
+UPDATE Auto SET Auto.Terminado = _Terminado WHERE (Numero_Chasis = _Numero_Chasis);
+END $$
+DELIMITER ;
+
+/* Baja AUTO */
+DELIMITER $$
+CREATE procedure bajaAuto (IN _Numero_Chasis int)
+BEGIN 
+DELETE from Auto WHERE Auto.Numero_Chasis = _Numero_Chasis;
+END $$
+DELIMITER ;
 
 
 -- AltaInsumo
